@@ -1,0 +1,99 @@
+<h1>Upload Poem</h1>
+<hr />
+<div>
+  <form action="/image/uploadBook" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="name">Title</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Name"
+        value=""
+        name="name"
+        required
+      />
+    </div>
+    <div>
+      <label for="desc">Description</label>
+      <textarea
+        id="desc"
+        name="desc"
+        value="desc"
+        rows="2"
+        placeholder="Language"
+        required
+      >
+      </textarea>
+    </div>
+    <div>
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" name="image" value="" required />
+    </div>
+    <div>
+      <label for="publisher">Publisher</label>
+      <input
+        type="text"
+        id="publisher"
+        name="publisher"
+        value=""
+        placeholder="publisher"
+        required
+      />
+      <!-- </textarea> -->
+    </div>
+    <div>
+      <label for="alink">Amazon Link</label>
+      <input
+        type="text"
+        id="alink"
+        name="alink"
+        value=""
+        placeholder="alink"
+        required
+      />
+      <!-- </textarea> -->
+    </div>
+    <div>
+      <label for="googlelink">Google Link</label>
+      <input
+        type="text"
+        id="googlelink"
+        name="googlelink"
+        value=""
+        placeholder="googlelink"
+      />
+      <!-- </textarea> -->
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<a href="/users/profile">Back</a>
+
+<h1>Uploaded Poem</h1>
+<div class="list">
+  <% items.forEach(function(image) { %>
+  <div class="listItem">
+    <div>
+      <img
+        src="data:image/<%=image.img.contentType%>;base64,
+                 <%=image.img.data%>"
+        style="height: 300px; width: 300px"
+      />
+    </div>
+    <div>
+      <h3><%= image.name %></h3>
+      <p><%= image.desc %></p>
+      <p><%= image._id %></p>
+    </div>
+    <div>
+      <a href="/deletethings/<%= image._id%>/deletebook">
+        <button class="cardbutton">Delete</button>
+      </a>
+    </div>
+  </div>
+  <% }) %>
+</div>
